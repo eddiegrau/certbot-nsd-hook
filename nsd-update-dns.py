@@ -78,4 +78,4 @@ zonefile = get_zonefile(certbot_domain)
 copyfile(zonefile, zonefile + ".bak")
 update_domain(certbot_domain, zonefile, certbot_validation)
 
-subprocess.run(['systemctl', 'reload', 'nsd'])
+subprocess.run(['nsd-control', '-c', '/etc/nsd/nsd.conf', 'reload'])
